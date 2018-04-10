@@ -1,0 +1,13 @@
+/* grant all privileges on *.* to 'scott'@'localhost' identified by 'tiger'; */
+
+drop database CarRace;
+create database if not exists CarRace;
+use CarRace;
+
+create table if not exists Client(p_name VARCHAR(255) not NULL, money REAL, constraint PRIMARY KEY (p_name));
+create table if not exists Race(r_id INTEGER not NULL,status  VARCHAR(255),date DATE,time INTEGER,sum REAL, winner INTEGER ,constraint PRIMARY KEY ( r_id ));
+create table if not exists Car(c_id INTEGER not NULL , type VARCHAR(255) , manufacturer VARCHAR(255), color VARCHAR(255), r_id INTEGER);
+create table if not exists Bet(b_id INTEGER not NULL, r_id INTEGER,amount REAL,p_name VARCHAR(255), car INTEGER, constraint PRIMARY KEY (b_id));
+create table if not exists System(r_id INTEGER not null , profit REAL , prize REAL);
+
+commit;
